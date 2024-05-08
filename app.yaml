@@ -1,0 +1,9 @@
+runtime: python39
+service: marketaf
+entrypoint: gunicorn -b :$PORT --chdir Portfolio/ portfolio.wsgi:application
+
+handlers:
+  - url: /static
+    static_dir: static/
+  - url: /.*
+    script: auto
